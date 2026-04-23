@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>النموذج الاستراتيجي — الإدارة العامة للاستراتيجية المؤسسية</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #0a1628;
+  --ink-soft: #1a2b47;
+  --paper: #f5f2ea;
+  --paper-warm: #ede8dd;
+  --gold: #8b6f2e;
+  --gold-bright: #b8923d;
+  --accent: #2d5f3f;
+  --accent-soft: #4a7d5c;
+  --rule: #c4b89a;
+  --muted: #6b5d42;
+  --bar-bg: #e4dcc6;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Rubik', sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  line-height: 1.7;
+  font-size: 16px;
+}
+.container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+
+header {
+  padding: 4rem 0 3rem;
+  border-bottom: 3px double var(--gold);
+  position: relative;
+  margin-bottom: 4rem;
+}
+header::before {
+  content: '';
+  position: absolute;
+  top: 0; right: 0; left: 0;
+  height: 6px;
+  background: linear-gradient(90deg, var(--gold) 0%, var(--gold-bright) 50%, var(--gold) 100%);
+}
+.header-eyebrow {
+  font-family: 'Amiri', serif;
+  font-size: 0.85rem;
+  color: var(--gold);
+  letter-spacing: 4px;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+.header-title {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  line-height: 1.2;
+  color: var(--ink);
+  margin-bottom: 1rem;
+}
+.header-subtitle {
+  font-size: 1.1rem;
+  color: var(--muted);
+  max-width: 700px;
+  margin-bottom: 2rem;
+}
+.header-meta {
+  display: flex;
+  gap: 3rem;
+  flex-wrap: wrap;
+  padding-top: 2rem;
+  border-top: 1px solid var(--rule);
+}
+.meta-item { display: flex; flex-direction: column; gap: 0.3rem; }
+.meta-label {
+  font-size: 0.75rem;
+  color: var(--muted);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+.meta-value { font-size: 1rem; color: var(--ink); font-weight: 500; }
+
+section { margin-bottom: 5rem; }
+.section-number {
+  font-family: 'Amiri', serif;
+  font-size: 3rem;
+  color: var(--gold);
+  font-weight: 700;
+  line-height: 1;
+  opacity: 0.3;
+  position: absolute;
+  top: -10px;
+  left: 0;
+}
+.section-header {
+  position: relative;
+  padding: 1.5rem 0 1.5rem 80px;
+  margin-bottom: 2.5rem;
+  border-bottom: 1px solid var(--rule);
+}
+.section-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+.section-kicker {
+  font-size: 0.8rem;
+  color: var(--gold);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.exec-summary {
+  background: var(--paper-warm);
+  padding: 3rem;
+  border-right: 5px solid var(--gold);
+  margin-bottom: 3rem;
+}
+.exec-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px dashed var(--rule);
+}
+.exec-stat { text-align: center; }
+.exec-stat-number {
+  font-family: 'Amiri', serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--accent);
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+.exec-stat-label {
+  font-size: 0.85rem;
+  color: var(--muted);
+  letter-spacing: 1px;
+}
+
+.objective-card {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 3rem;
+  position: relative;
+  overflow: hidden;
+}
+.objective-card::before {
+  content: '';
+  position: absolute;
+  top: 0; right: 0;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(184, 146, 61, 0.15) 0%, transparent 70%);
+}
+.objective-label {
+  font-size: 0.85rem;
+  color: var(--gold-bright);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  position: relative;
+}
+.objective-text {
+  font-size: 1.6rem;
+  font-weight: 600;
+  line-height: 1.5;
+  position: relative;
+}
+
+.kpi-card {
+  background: white;
+  border: 2px solid var(--rule);
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 2rem;
+  align-items: center;
+  margin-top: 2rem;
+}
+.kpi-icon {
+  width: 60px;
+  height: 60px;
+  background: var(--gold);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Amiri', serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+.kpi-content h4 { font-size: 1.2rem; margin-bottom: 0.3rem; }
+.kpi-content p { font-size: 0.9rem; color: var(--muted); }
+.kpi-meta { text-align: left; font-size: 0.85rem; }
+.kpi-meta div {
+  padding: 0.3rem 0.8rem;
+  background: var(--paper-warm);
+  margin-bottom: 0.3rem;
+  border-right: 3px solid var(--gold);
+}
+
+.state-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+.state-card {
+  background: white;
+  padding: 2rem 1.5rem;
+  border: 1px solid var(--rule);
+  position: relative;
+}
+.state-card.highlight {
+  border: 2px solid var(--gold);
+  background: var(--paper-warm);
+}
+.state-card.highlight::before {
+  content: 'إدارتنا';
+  position: absolute;
+  top: -12px;
+  right: 1.5rem;
+  background: var(--gold);
+  color: white;
+  padding: 0.2rem 0.8rem;
+  font-size: 0.75rem;
+}
+.state-code {
+  font-family: 'Amiri', serif;
+  font-size: 0.9rem;
+  color: var(--gold);
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+.state-name { font-size: 1rem; margin: 0.5rem 0 1rem; }
+.state-score { display: flex; align-items: baseline; gap: 0.5rem; margin-bottom: 1rem; }
+.state-current {
+  font-family: 'Amiri', serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--accent);
+  line-height: 1;
+}
+.state-target { color: var(--muted); font-size: 1rem; }
+.state-bar { height: 6px; background: var(--bar-bg); overflow: hidden; }
+.state-bar-fill { height: 100%; background: linear-gradient(90deg, var(--accent) 0%, var(--accent-soft) 100%); }
+.state-gap { font-size: 0.8rem; color: var(--muted); margin-top: 0.5rem; }
+
+.kr-card {
+  background: white;
+  border: 1px solid var(--rule);
+  margin-bottom: 1.5rem;
+  display: grid;
+  grid-template-columns: 100px 1fr;
+}
+.kr-number {
+  background: var(--ink);
+  color: var(--paper);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+  font-family: 'Amiri', serif;
+  position: relative;
+}
+.kr-number::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 10%; bottom: 10%;
+  width: 4px;
+  background: var(--gold-bright);
+}
+.kr-label {
+  font-size: 0.7rem;
+  letter-spacing: 2px;
+  color: var(--gold-bright);
+  margin-bottom: 0.3rem;
+}
+.kr-num { font-size: 2rem; font-weight: 700; }
+.kr-content { padding: 1.8rem 2rem; }
+.kr-title { font-size: 1.15rem; font-weight: 600; margin-bottom: 0.3rem; }
+.kr-code {
+  font-family: 'Amiri', serif;
+  font-size: 0.85rem;
+  color: var(--gold);
+  letter-spacing: 2px;
+  margin-bottom: 1rem;
+}
+.kr-details { font-size: 0.92rem; color: var(--muted); line-height: 1.8; }
+.kr-details ul { list-style: none; padding: 0; }
+.kr-details li { padding: 0.3rem 0; padding-right: 1.2rem; position: relative; }
+.kr-details li::before {
+  content: '◆';
+  position: absolute;
+  right: 0;
+  color: var(--gold);
+  font-size: 0.6rem;
+  top: 0.8rem;
+}
+
+.initiative-wrapper {
+  background: var(--paper-warm);
+  padding: 2.5rem;
+  margin-bottom: 2rem;
+  border: 1px solid var(--rule);
+}
+.initiative-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 2px solid var(--gold);
+}
+.initiative-icon {
+  width: 50px;
+  height: 50px;
+  background: var(--gold);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-family: 'Amiri', serif;
+  font-weight: 700;
+}
+.initiative-title { font-size: 1.3rem; font-weight: 700; }
+.initiative-sub { font-size: 0.85rem; color: var(--muted); margin-top: 0.2rem; }
+
+.projects-grid { display: grid; gap: 1rem; }
+.project-card {
+  background: white;
+  padding: 1.5rem 1.8rem;
+  border-right: 4px solid var(--accent);
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1.5rem;
+}
+.project-num {
+  font-family: 'Amiri', serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--accent);
+  line-height: 1;
+  padding-top: 0.3rem;
+}
+.project-body h5 { font-size: 1.05rem; margin-bottom: 0.3rem; }
+.project-link {
+  font-family: 'Amiri', serif;
+  font-size: 0.85rem;
+  color: var(--gold);
+  margin-bottom: 0.8rem;
+}
+.project-body ul { list-style: none; padding: 0; font-size: 0.9rem; color: var(--muted); }
+.project-body li { padding: 0.25rem 0; padding-right: 1rem; position: relative; }
+.project-body li::before { content: '—'; position: absolute; right: 0; color: var(--gold); }
+
+.timeline-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border: 1px solid var(--rule);
+  font-size: 0.95rem;
+}
+.timeline-table th {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 1rem;
+  text-align: right;
+  font-weight: 500;
+  font-size: 0.85rem;
+}
+.timeline-table th.quarter { text-align: center; background: var(--ink-soft); width: 80px; }
+.timeline-table td { padding: 1rem; border-bottom: 1px solid var(--rule); }
+.timeline-table td.quarter { text-align: center; padding: 0.5rem; }
+.quarter-cell {
+  display: inline-block;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--bar-bg);
+}
+.quarter-cell.active {
+  background: var(--accent);
+  box-shadow: 0 0 0 3px rgba(45, 95, 63, 0.15);
+}
+.timeline-project-name { font-weight: 600; }
+.timeline-project-sub { font-size: 0.8rem; color: var(--muted); margin-top: 0.2rem; }
+
+.mapping-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border: 1px solid var(--rule);
+  font-size: 0.9rem;
+}
+.mapping-table th {
+  background: var(--paper-warm);
+  padding: 1rem;
+  text-align: right;
+  font-weight: 600;
+  border-bottom: 2px solid var(--gold);
+}
+.mapping-table td { padding: 1rem; border-bottom: 1px solid var(--rule); }
+.mapping-code { font-family: 'Amiri', serif; color: var(--gold); font-weight: 700; }
+.mapping-count {
+  display: inline-block;
+  background: var(--accent);
+  color: white;
+  padding: 0.2rem 0.7rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.glossary-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+.glossary-item { background: white; padding: 1.5rem; border-top: 3px solid var(--gold); }
+.glossary-term { font-weight: 700; font-size: 1.05rem; margin-bottom: 0.3rem; }
+.glossary-term span {
+  font-family: 'Amiri', serif;
+  color: var(--gold);
+  font-size: 0.85rem;
+  margin-right: 0.5rem;
+}
+.glossary-def { font-size: 0.9rem; color: var(--muted); line-height: 1.7; }
+
+footer {
+  margin-top: 6rem;
+  padding: 3rem 0;
+  border-top: 3px double var(--gold);
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+footer .logo-mark {
+  font-family: 'Amiri', serif;
+  font-size: 1.5rem;
+  color: var(--gold);
+  margin-bottom: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .container { padding: 0 1rem; }
+  .section-header { padding-right: 0; }
+  .section-number { position: static; opacity: 0.2; }
+  .kr-card { grid-template-columns: 1fr; }
+  .kr-number { flex-direction: row; padding: 1rem; }
+  .kr-number::after { display: none; }
+  .kpi-card { grid-template-columns: 1fr; }
+  .exec-summary { padding: 2rem 1.5rem; }
+  .header-meta { flex-direction: column; gap: 1rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<header>
+  <div class="header-eyebrow">وثيقة النموذج الاستراتيجي — ٢٠٢٦</div>
+  <h1 class="header-title">الإدارة العامة<br>للاستراتيجية المؤسسية</h1>
+  <p class="header-subtitle">
+    نموذج متكامل يربط الهدف الاستراتيجي بمؤشر الأثر وهدفين سنويين متوازيين للنتائج،
+    مدعومَين بمبادرتين وتسعة مشاريع تنفيذية.
+  </p>
+  <div class="header-meta">
+    <div class="meta-item"><span class="meta-label">الوكالة</span><span class="meta-value">التطوير المؤسسي</span></div>
+    <div class="meta-item"><span class="meta-label">المرجعية</span><span class="meta-value">معايير مركز أداء — SM</span></div>
+    <div class="meta-item"><span class="meta-label">الدورة</span><span class="meta-value">سنوية ٢٠٢٦</span></div>
+  </div>
+</header>
+
+<section>
+  <div class="section-header">
+    <span class="section-number">١</span>
+    <div class="section-kicker">Executive Summary</div>
+    <h2 class="section-title">ملخص تنفيذي</h2>
+  </div>
+  <div class="exec-summary">
+    <p style="font-size: 1.05rem; line-height: 1.9;">
+      تعمل الإدارة العامة للاستراتيجية المؤسسية خلال عام ٢٠٢٦ على <strong>أولويتين متوازيتين</strong>:
+      تحقيق الدرجة الكاملة (٥ من ٥) في تقييم مركز أداء لمجال إدارة الاستراتيجية (SM)،
+      وترسيخ منظومة متكاملة لإدارة التقارير السنوية للوزارة والمنظومة.
+    </p>
+    <p style="font-size: 1.05rem; line-height: 1.9; margin-top: 1rem;">
+      يعتمد النموذج على <strong>هدف استراتيجي واحد</strong> مدعوم بمؤشر استراتيجي محوري،
+      و<strong>هدفين سنويين (OKR)</strong> يضمان تسع نتائج رئيسية،
+      تُترجَم عبر <strong>مبادرتين</strong> تضمان <strong>تسعة مشاريع</strong> تنفيذية.
+    </p>
+    <div class="exec-grid">
+      <div class="exec-stat"><div class="exec-stat-number">١</div><div class="exec-stat-label">هدف استراتيجي</div></div>
+      <div class="exec-stat"><div class="exec-stat-number">٢</div><div class="exec-stat-label">أهداف سنوية OKR</div></div>
+      <div class="exec-stat"><div class="exec-stat-number">٩</div><div class="exec-stat-label">نتائج رئيسية KR</div></div>
+      <div class="exec-stat"><div class="exec-stat-number">٢</div><div class="exec-stat-label">مبادرات</div></div>
+      <div class="exec-stat"><div class="exec-stat-number">٩</div><div class="exec-stat-label">مشاريع</div></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-header">
+    <span class="section-number">٢</span>
+    <div class="section-kicker">Strategic Objective</div>
+    <h2 class="section-title">الهدف والمؤشر الاستراتيجي</h2>
+  </div>
+  <div class="objective-card">
+    <div class="objective-label">◆ الهدف الاستراتيجي</div>
+    <div class="objective-text">استراتيجية مؤسسية متكاملة ومُفعّلة على مستوى الوزارة</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-icon">م١</div>
+    <div class="kpi-content">
+      <h4>درجة مجال إدارة الاستراتيجية في تقييم مركز أداء</h4>
+      <p>يقيس جودة البناء والتفعيل عبر ٥٣ معياراً في خمسة محاور رئيسية</p>
+    </div>
+    <div class="kpi-meta">
+      <div>النوع: Lagging</div>
+      <div>الدورية: سنوي</div>
+      <div>المستهدف: ٥ / ٥</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-header">
+    <span class="section-number">٣</span>
+    <div class="section-kicker">Baseline</div>
+    <h2 class="section-title">الوضع الحالي</h2>
+  </div>
+  <p style="margin-bottom: 1rem; color: var(--muted);">آخر تقييم من مركز أداء على مستوى الوكالة:</p>
+  <div class="state-grid">
+    <div class="state-card highlight">
+      <div class="state-code">SM</div>
+      <div class="state-name">إدارة الاستراتيجية</div>
+      <div class="state-score"><span class="state-current">٣٫٢</span><span class="state-target">/ ٥</span></div>
+      <div class="state-bar"><div class="state-bar-fill" style="width: 64%"></div></div>
+      <div class="state-gap">الفجوة: ١٫٨ نقطة</div>
+    </div>
+    <div class="state-card">
+      <div class="state-code">PM</div>
+      <div class="state-name">إدارة الأداء</div>
+      <div class="state-score"><span class="state-current">٣٫١</span><span class="state-target">/ ٥</span></div>
+      <div class="state-bar"><div class="state-bar-fill" style="width: 62%"></div></div>
+      <div class="state-gap">الفجوة: ١٫٩ نقطة</div>
+    </div>
+    <div class="state-card">
+      <div class="state-code">IM</div>
+      <div class="state-name">إدارة المبادرات</div>
+      <div class="state-score"><span class="state-current">٢٫٢</span><span class="state-target">/ ٥</span></div>
+      <div class="state-bar"><div class="state-bar-fill" style="width: 44%"></div></div>
+      <div class="state-gap">الفجوة: ٢٫٨ نقطة</div>
+    </div>
+    <div class="state-card">
+      <div class="state-code">CM</div>
+      <div class="state-name">إدارة التغيير</div>
+      <div class="state-score"><span class="state-current">٣٫٢</span><span class="state-target">/ ٥</span></div>
+      <div class="state-bar"><div class="state-bar-fill" style="width: 64%"></div></div>
+      <div class="state-gap">الفجوة: ١٫٨ نقطة</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-header">
+    <span class="section-number">٤</span>
+    <div class="section-kicker">Annual OKR 1</div>
+    <h2 class="section-title">الهدف السنوي الأول: تقييم مركز أداء</h2>
+  </div>
+  <div class="objective-card">
+    <div class="objective-label">◆ Objective 1</div>
+    <div class="objective-text">تحقيق ٥ من ٥ في تقييم مركز أداء لمجال إدارة الاستراتيجية</div>
+  </div>
+  <div style="margin-top: 2rem;">
+    <div class="kr-card">
+      <div class="kr-number"><span class="kr-label">KR</span><span class="kr-num">١</span></div>
+      <div class="kr-content">
+        <div class="kr-title">استكمال متطلبات إطار عمل إدارة الاستراتيجية</div>
+        <div class="kr-code">SM-1 · ٤ معايير</div>
+        <div class="kr-details"><ul>
+          <li>وحدة معتمدة لإدارة الاستراتيجية في الهيكل التنظيمي</li>
+          <li>دليل معتمد يغطي دورة الحياة (تحليل، صياغة، مواءمة، مراجعة)</li>
+          <li>مصفوفة RACI معتمدة ومطبقة على العمليات</li>
+          <li>جدول زمني معتمد متقاطع مع الوحدات الداعمة</li>
+        </ul></div>
+      </div>
+    </div>
+    <div class="kr-card">
+      <div class="kr-number"><span class="kr-label">KR</span><span class="kr-num">٢</span></div>
+      <div class="kr-content">
+        <div class="kr-title">استكمال متطلبات التحليل والتوجهات الاستراتيجية</div>
+        <div class="kr-code">SM-2 · ١٢ معياراً</div>
+        <div class="kr-details"><ul>
+          <li>تحليل بيئة داخلية وخارجية موثق (SWOT، PESTEL، مقارنة معيارية)</li>
+          <li>إشراك أصحاب المصلحة الداخليين والخارجيين</li>
+          <li>تحليل المخاطر الاستراتيجية مع خطط معالجة معتمدة</li>
+          <li>بناء السيناريوهات الاستراتيجية وخيارات الاستجابة</li>
+          <li>رسالة ورؤية وقيم مؤسسية معتمدة مع سلوكيات تطبيقية</li>
+          <li>ربط موثق بالاستراتيجيات الوطنية والقطاعية</li>
+          <li>آلية مراجعة دورية للرؤية والرسالة والقيم</li>
+        </ul></div>
+      </div>
+    </div>
+    <div class="kr-card">
+      <div class="kr-number"><span class="kr-label">KR</span><span class="kr-num">٣</span></div>
+      <div class="kr-content">
+        <div class="kr-title">استكمال متطلبات صياغة الاستراتيجية</div>
+        <div class="kr-code">SM-3 · ٢٤ معياراً</div>
+        <div class="kr-details"><ul>
+          <li>أهداف استراتيجية معتمدة مع مالكين ومحاور</li>
+          <li>تغطية الأنشطة الرئيسة والداعمة مع خريطة استراتيجية</li>
+          <li>خطة تواصل ونشر الاستراتيجية</li>
+          <li>مؤشرات أداء رئيسية مع توازن Leading/Lagging</li>
+          <li>توثيق المؤشرات وخطوط الأساس ومكتبة موحدة</li>
+          <li>مقارنات معيارية فنية مع جهات مماثلة</li>
+          <li>مستهدفات معتمدة مع عتبات أداء وتسلسل زمني</li>
+          <li>محفظة مبادرات مربوطة بالأهداف</li>
+        </ul></div>
+      </div>
+    </div>
+    <div class="kr-card">
+      <div class="kr-number"><span class="kr-label">KR</span><span class="kr-num">٤</span></div>
+      <div class="kr-content">
+        <div class="kr-title">استكمال متطلبات المواءمة وخطة التنفيذ</div>
+        <div class="kr-code">SM-4 · ٨ معايير</div>
+        <div class="kr-details"><ul>
+          <li>مواءمة موثقة مع الأجهزة الشقيقة والمتقاطعة</li>
+          <li>تعميم الأهداف والمؤشرات على الإدارات العامة</li>
+          <li>مواءمة الاستراتيجية مع الأقسام المساندة</li>
+          <li>خطة تنفيذ شاملة تتضمن الأهداف والمؤشرات والمبادرات</li>
+          <li>الخطة تتضمن المخاطر والتحليل البيئي وخطة القوى العاملة</li>
+        </ul></div>
+      </div>
+    </div>
+    <div class="kr-card">
+      <div class="kr-number"><span class="kr-label">KR</span><span class="kr-num">٥</span></div>
+      <div class="kr-content">
+        <div class="kr-title">استكمال متطلبات مراجعة الاستراتيجية</div>
+        <div class="kr-code">SM-5 · ٥ معايير</div>
+        <div class="kr-details"><ul>
+          <li>اجتماعات دورية معتمدة مع القيادة العليا وتوثيق المخرجات</li>
+          <li>استخدام تقارير الأداء الاستراتيجي كمدخل للمراجعة</li>
+          <li>مراجعة مخرجات التحليل البيئي مع أصحاب المصلحة</li>
+          <li>توثيق التغييرات ومشاركتها مع المعنيين</li>
+          <li>إطار عمل معتمد للمراجعة متوافق مع الدورة المالية</li>
+        </ul></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-header">
+    <span class="section-number">٥</span>
+    <div class="section-kicker">Annual OKR 2</div>
+    <h2 class="section-title">الهدف السنوي الثاني: منظومة التقارير السنوية</h2>
+  </div>
+  <div class="objective-card">
+    <div class="objective-label">◆ Objective 2</div>
+    <div class="objective-text">ترسيخ منظومة إدارة التقارير السنوية للوزارة والمنظومة</div>
+  </div>
+  <div style="margin-top: 2rem;">
+    <div class="kr-card">
+      <div class="kr-number"><span class="kr-label">KR</span><span class="kr-num">١</span></div>
+      <div class="kr-content">
+        <div class="kr-title">اعتماد إجراء إعداد التقرير السنوي للوزارة</div>
+        <div class="kr-code">Annual Report Procedure</div>
+        <div class="kr-details"><ul>
+          <li>توثيق دورة حياة التقرير من التخطيط إلى الاعتماد</li>
+          <li>تحديد الأدوار والمسؤوليات لجميع الأطراف</li>
+          <li>إعداد الجدول الزمني السنوي مع البدء المبكر للتعاقد</li>
+          <li>تطوير قوالب جمع البيانات من الوحدات</li>
+          <li>آلية المراجعة والاعتماد النهائي</li>
+        </ul></div>
+      </div>
+    </div>
+    <div class="kr-card">
+      <div class="kr-number"><span class="kr-label">KR</span><span class="kr-num">٢</span></div>
+      <div class="kr-content">
+        <div class="kr-title">اعتماد إجراء لجنة المنظومة لمراجعة التقارير السنوية</div>
+        <div class="kr-code">Ecosystem Review Committee</div>
+        <div class="kr-details"><ul>
+          <li>تشكيل لجنة مراجعة معتمدة مع تحديد أعضائها وصلاحياتها</li>
+          <li>تطوير معايير مراجعة موحدة لتقارير المنظومة</li>
+          <li>آلية التغذية الراجعة للجهات مع جدول زمني</li>
+          <li>دورة المراجعة والاعتماد المعتمدة</li>
+        </ul></div>
+      </div>
+    </div>
+    <div class="kr-card">
+      <div class="kr-number"><span class="kr-label">KR</span><span class="kr-num">٣</span></div>
+      <div class="kr-content">
+        <div class="kr-title">اعتماد إجراء التواصل المؤسسي للتقرير السنوي</div>
+        <div class="kr-code">Corporate Communication</div>
+        <div class="kr-details"><ul>
+          <li>إعداد دليل الهوية البصرية للتقرير</li>
+          <li>تطوير قوالب التصميم والإخراج</li>
+          <li>خطة النشر والتوزيع الرقمي والمطبوع</li>
+          <li>آلية التنسيق مع الشركاء الخارجيين</li>
+        </ul></div>
+      </div>
+    </div>
+    <div class="kr-card">
+      <div class="kr-number"><span class="kr-label">KR</span><span class="kr-num">٤</span></div>
+      <div class="kr-content">
+        <div class="kr-title">تسليم التقرير السنوي للوزارة في الموعد المعتمد</div>
+        <div class="kr-code">Annual Report Delivery</div>
+        <div class="kr-details"><ul>
+          <li>تطبيق الإجراءات المعتمدة فعلياً</li>
+          <li>الالتزام بالجدول الزمني المعتمد</li>
+          <li>استيفاء جميع متطلبات المحتوى والشكل</li>
+        </ul></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-header">
+    <span class="section-number">٦</span>
+    <div class="section-kicker">Initiatives & Projects</div>
+    <h2 class="section-title">المبادرات والمشاريع</h2>
+  </div>
+
+  <div class="initiative-wrapper">
+    <div class="initiative-header">
+      <div class="initiative-icon">١</div>
+      <div>
+        <div class="initiative-title">رفع نضج ممارسات إدارة الاستراتيجية</div>
+        <div class="initiative-sub">المبادرة الأولى — مرتبطة بـ OKR 1 — خمسة مشاريع</div>
+      </div>
+    </div>
+    <div class="projects-grid">
+      <div class="project-card">
+        <div class="project-num">١</div>
+        <div class="project-body">
+          <h5>تأسيس إطار عمل إدارة الاستراتيجية</h5>
+          <div class="project-link">◆ مرتبط بـ KR1 / SM-1</div>
+          <ul>
+            <li>إعداد واعتماد دليل عمليات إدارة الاستراتيجية</li>
+            <li>تطوير واعتماد مصفوفة RACI</li>
+            <li>إعداد الجدول الزمني السنوي للعمليات</li>
+            <li>توثيق مهام ومسؤوليات وحدة إدارة الاستراتيجية</li>
+          </ul>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-num">٢</div>
+        <div class="project-body">
+          <h5>التحليل الاستراتيجي وبناء التوجهات</h5>
+          <div class="project-link">◆ مرتبط بـ KR2 / SM-2</div>
+          <ul>
+            <li>التحليل البيئي الداخلي والخارجي</li>
+            <li>تحليل أصحاب المصلحة والمخاطر الاستراتيجية</li>
+            <li>صياغة واعتماد الرؤية والرسالة والقيم</li>
+            <li>الربط والمواءمة مع الاستراتيجيات الوطنية</li>
+            <li>تحليل الفجوة الاستراتيجية الكمية</li>
+            <li>آلية المراجعة الدورية للتوجهات</li>
+          </ul>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-num">٣</div>
+        <div class="project-body">
+          <h5>صياغة الاستراتيجية ومنظومتها</h5>
+          <div class="project-link">◆ مرتبط بـ KR3 / SM-3</div>
+          <ul>
+            <li>صياغة الأهداف الاستراتيجية مع مالكيها</li>
+            <li>تطوير الخريطة الاستراتيجية وخطة التواصل</li>
+            <li>بناء مؤشرات الأداء ومكتبة المؤشرات</li>
+            <li>المقارنات المعيارية الفنية</li>
+            <li>تحديد المستهدفات وعتبات الأداء</li>
+            <li>بناء محفظة المبادرات الاستراتيجية</li>
+          </ul>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-num">٤</div>
+        <div class="project-body">
+          <h5>المواءمة وخطة التنفيذ</h5>
+          <div class="project-link">◆ مرتبط بـ KR4 / SM-4</div>
+          <ul>
+            <li>المواءمة الخارجية مع الأجهزة الشقيقة</li>
+            <li>تسقيط الأهداف والمؤشرات على الإدارات</li>
+            <li>المواءمة الداخلية مع الأقسام المساندة</li>
+            <li>إعداد خطة تنفيذ شاملة</li>
+          </ul>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-num">٥</div>
+        <div class="project-body">
+          <h5>منظومة مراجعة الاستراتيجية</h5>
+          <div class="project-link">◆ مرتبط بـ KR5 / SM-5</div>
+          <ul>
+            <li>تطوير إطار عمل المراجعة</li>
+            <li>تصميم جدول الاجتماعات الدورية</li>
+            <li>تطوير قوالب تقارير الأداء الاستراتيجي</li>
+            <li>آلية توثيق التغييرات ومشاركتها</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="initiative-wrapper">
+    <div class="initiative-header">
+      <div class="initiative-icon">٢</div>
+      <div>
+        <div class="initiative-title">تأسيس منظومة التقارير السنوية</div>
+        <div class="initiative-sub">المبادرة الثانية — مرتبطة بـ OKR 2 — أربعة مشاريع</div>
+      </div>
+    </div>
+    <div class="projects-grid">
+      <div class="project-card">
+        <div class="project-num">٦</div>
+        <div class="project-body">
+          <h5>إجراء إعداد التقرير السنوي للوزارة</h5>
+          <div class="project-link">◆ مرتبط بـ KR1 / OKR 2</div>
+          <ul>
+            <li>رسم دورة حياة التقرير من التخطيط للاعتماد</li>
+            <li>تحديد الأدوار والمسؤوليات</li>
+            <li>الجدول الزمني مع آلية التعاقد المبكر</li>
+            <li>قوالب جمع البيانات وآلية المراجعة</li>
+          </ul>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-num">٧</div>
+        <div class="project-body">
+          <h5>إجراء لجنة مراجعة تقارير المنظومة</h5>
+          <div class="project-link">◆ مرتبط بـ KR2 / OKR 2</div>
+          <ul>
+            <li>تشكيل اللجنة واعتمادها</li>
+            <li>معايير مراجعة التقارير</li>
+            <li>آلية التغذية الراجعة للجهات</li>
+            <li>دورة المراجعة والاعتماد</li>
+          </ul>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-num">٨</div>
+        <div class="project-body">
+          <h5>إجراء التواصل المؤسسي للتقرير</h5>
+          <div class="project-link">◆ مرتبط بـ KR3 / OKR 2</div>
+          <ul>
+            <li>دليل الهوية البصرية للتقرير</li>
+            <li>قوالب التصميم والإخراج</li>
+            <li>خطة النشر والتوزيع</li>
+            <li>قنوات التواصل الرقمي والمطبوع</li>
+          </ul>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-num">٩</div>
+        <div class="project-body">
+          <h5>إعداد وتسليم التقرير السنوي ٢٠٢٦</h5>
+          <div class="project-link">◆ مرتبط بـ KR4 / OKR 2</div>
+          <ul>
+            <li>تطبيق الإجراءات المعتمدة</li>
+            <li>إدارة دورة الإعداد والمراجعة</li>
+            <li>التسليم في الموعد المعتمد</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-header">
+    <span class="section-number">٧</span>
+    <div class="section-kicker">Quarterly Plan</div>
+    <h2 class="section-title">الجدول الزمني الربعي</h2>
+  </div>
+  <p style="margin-bottom: 1.5rem; color: var(--muted);">جميع المشاريع تُنفّذ خلال السنة الحالية:</p>
+  <table class="timeline-table">
+    <thead>
+      <tr>
+        <th>المشروع</th>
+        <th class="quarter">Q1</th>
+        <th class="quarter">Q2</th>
+        <th class="quarter">Q3</th>
+        <th class="quarter">Q4</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="background: var(--paper-warm);">
+        <td colspan="5" style="padding: 0.6rem 1rem; font-size: 0.8rem; color: var(--gold); font-weight: 700;">◆ المبادرة الأولى — رفع نضج إدارة الاستراتيجية</td>
+      </tr>
+      <tr>
+        <td><div class="timeline-project-name">١. تأسيس إطار عمل إدارة الاستراتيجية</div><div class="timeline-project-sub">KR1 · SM-1</div></td>
+        <td class="quarter"><span class="quarter-cell active"></span></td>
+        <td class="quarter"><span class="quarter-cell active"></span></td>
+        <td class="quarter"><span class="quarter-cell"></span></td>
+        <td class="quarter"><span class="quarter-cell"></span></td>
+      </tr>
+      <tr>
+        <td><div class="timeline-project-name">٢. التحليل الاستراتيجي وبناء التوجهات</div><div class="timeline-project-sub">KR2 · SM-2</div></td>
+        <td class="quarter"><span class="quarter-cell active"></span></td>
+        <td class="quarter"><span class="quarter-cell active"></span></td>
+        <td class="quarter"><span class="quarter-cell"></span></td>
+        <td class="quarter"><span class="quarter-cell"></span></td>
+      </tr>
+      <tr>
+        <td><div class="timeline-project-name">٣. صياغة الاستراتيجية ومنظومتها</div><div class="timeline-project-sub">KR3 · SM-3</div></td>
+        <td class="quarter"><span class="quarter-cell"></span></td>
+        <td class="quarter"><span class="quarter-cell active"></span></td>
+        <td class="quarter"><span class="quarter-cell active"></span></td>
+        <td class="quarter"><span class="quarter-cell"></span></td>
+      </tr>
+      <tr>
+        <td><div class="timeline-project-name">٤. المواءمة وخطة التنفيذ</div><div class="timeline-project-sub">KR4 · SM-4</div></td>
+        <td class="quarter"><span class="quarter-cell"></span></td>
+        <td class="quarter"><span class="quarter-cell"></span></td>
+        <td class="quarter"><span class="quarter-cell active"></span></td>
+        <td class="quarter"><span class="quarter-cell active"></span></td>
+      </tr>
+      <tr>
+        <td><div class="timeline-project-name">٥. منظومة مراجعة الاستراتيجية</div><div class="timeline-project-sub">KR5 · SM-5</div></td>
+        <td class="quarter"><span class="quarter-cell"></span></td>
+        <td class="quarter"><span class="quarter-cell"></span></td>
+        <td class="quarter"><span class="quarter-cell active"></span></td>
+        <td class="quarter"><span class="quarter-cell active"></span></td>
+      </tr>
+      <tr style="background: var(--paper-warm);">
+        <td colspan="5" style="padding: 0.6rem 1rem; font-size: 0.8rem; color: var(--gold); font-weight: 700;">◆ المبادرة الثانية — منظومة التقارير السنوية</td>
+      </tr>
+      <tr>
+        <td><div class="timeline-project-name">٦. إجراء إعداد التقرير السنوي للوزارة</div><div class="timeline-project-sub">KR1 · OKR 2</div></td>
+        <td class="quarter"><span class="quarter-cell active"></span></td>
+        <td class="quarter"><span class="quarter-cell active"></span></td>
+        <td class="quarter"><span class="quarter-cell"></span></td>
+        <td class="quarter"><span class="quarter-cell"></span></td>
+      </tr>
+      <tr>
+        <td><div class="timeline-project-name">٧. إجراء لجنة مراجعة تقارير المنظومة</div><div class="timeline-project-sub">KR2 · OKR 2</div></td>
+        <td class="quarter"><span class="quarter-cell active"></span></td>
+        <td class="quarter"><span class="quarter-cell active"></span></td>
+        <td class="quarter"><span class="quarter-cell"></span></td>
+        <td class="quarter"><span class="quarter-cell"></span></td>
+      </tr>
+      <tr>
+        <td><div class="timeline-project-name">٨. إجراء التواصل المؤسسي للتقرير</div><div class="timeline-project-sub">KR3 · OKR 2</div></td>
+        <td class="quarter"><span class="quarter-cell"></span></td>
+        <td class="quarter"><span class="quarter-cell active"></span></td>
+        <td class="quarter"><span class="quarter-cell active"></span></td>
+        <td class="quarter"><span class="quarter-cell"></span></td>
+      </tr>
+      <tr>
+        <td><div class="timeline-project-name">٩. إعداد وتسليم التقرير السنوي ٢٠٢٦</div><div class="timeline-project-sub">KR4 · OKR 2</div></td>
+        <td class="quarter"><span class="quarter-cell"></span></td>
+        <td class="quarter"><span class="quarter-cell"></span></td>
+        <td class="quarter"><span class="quarter-cell active"></span></td>
+        <td class="quarter"><span class="quarter-cell active"></span></td>
+      </tr>
+    </tbody>
+  </table>
+  <p style="margin-top: 1rem; font-size: 0.85rem; color: var(--muted);">المبادرتان تسيران <strong>بالتوازي</strong>.</p>
+</section>
+
+<section>
+  <div class="section-header">
+    <span class="section-number">٨</span>
+    <div class="section-kicker">Reference Mapping</div>
+    <h2 class="section-title">خريطة ربط النتائج بمعايير SM</h2>
+  </div>
+  <p style="margin-bottom: 1.5rem; color: var(--muted);">
+    تخص هذه الخريطة <strong>OKR 1</strong>. أما <strong>OKR 2</strong> فنتائجه مستقلة.
+  </p>
+  <table class="mapping-table">
+    <thead>
+      <tr><th>النتيجة</th><th>المحور</th><th>الاسم</th><th>عدد المعايير</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>KR1</strong></td><td><span class="mapping-code">SM-1</span></td><td>إطار عمل إدارة الاستراتيجية</td><td><span class="mapping-count">٤</span></td></tr>
+      <tr><td><strong>KR2</strong></td><td><span class="mapping-code">SM-2</span></td><td>التحليل وتحديد التوجهات</td><td><span class="mapping-count">١٢</span></td></tr>
+      <tr><td><strong>KR3</strong></td><td><span class="mapping-code">SM-3</span></td><td>صياغة الاستراتيجية</td><td><span class="mapping-count">٢٤</span></td></tr>
+      <tr><td><strong>KR4</strong></td><td><span class="mapping-code">SM-4</span></td><td>المواءمة وخطة التنفيذ</td><td><span class="mapping-count">٨</span></td></tr>
+      <tr><td><strong>KR5</strong></td><td><span class="mapping-code">SM-5</span></td><td>مراجعة الاستراتيجية</td><td><span class="mapping-count">٥</span></td></tr>
+      <tr style="background: var(--paper-warm);">
+        <td colspan="3" style="text-align: left; font-weight: 700;">الإجمالي</td>
+        <td><span class="mapping-count" style="background: var(--ink);">٥٣</span></td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <div class="section-header">
+    <span class="section-number">٩</span>
+    <div class="section-kicker">Glossary</div>
+    <h2 class="section-title">مسرد المصطلحات</h2>
+  </div>
+  <div class="glossary-grid">
+    <div class="glossary-item">
+      <div class="glossary-term"><span>OKR</span>الأهداف والنتائج الرئيسية</div>
+      <div class="glossary-def">منهجية تربط هدفاً طموحاً (Objective) بنتائج قابلة للقياس (Key Results).</div>
+    </div>
+    <div class="glossary-item">
+      <div class="glossary-term"><span>SM</span>Strategy Management</div>
+      <div class="glossary-def">مجال إدارة الاستراتيجية في معايير مركز أداء — ٥٣ معياراً عبر ٥ محاور.</div>
+    </div>
+    <div class="glossary-item">
+      <div class="glossary-term"><span>Leading</span>مؤشر موجِّه</div>
+      <div class="glossary-def">مؤشر يقيس نشاطاً يسبق النتيجة، يعطي إشارات مبكرة.</div>
+    </div>
+    <div class="glossary-item">
+      <div class="glossary-term"><span>Lagging</span>مؤشر تابع</div>
+      <div class="glossary-def">مؤشر يقيس النتيجة النهائية بعد حدوثها. يعكس الأثر الفعلي.</div>
+    </div>
+    <div class="glossary-item">
+      <div class="glossary-term"><span>RACI</span>مصفوفة الصلاحيات</div>
+      <div class="glossary-def">Responsible, Accountable, Consulted, Informed — لتحديد الأدوار.</div>
+    </div>
+    <div class="glossary-item">
+      <div class="glossary-term"><span>Baseline</span>خط الأساس</div>
+      <div class="glossary-def">القيمة الحالية للمؤشر قبل التدخل، مرجع لقياس التحسن.</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="logo-mark">◆ ◆ ◆</div>
+  <div>وثيقة داخلية — الإدارة العامة للاستراتيجية المؤسسية</div>
+  <div style="margin-top: 0.3rem;">وكالة التطوير المؤسسي — وزارة النقل</div>
+</footer>
+
+</div>
+</body>
+</html>
